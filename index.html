@@ -361,6 +361,7 @@
 
   footer { border-top: 1px solid var(--divider); padding: 44px 0 72px; font-size: 15px; }
   footer a { color: var(--ink); text-underline-offset: 3px; }
+  footer .counted { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -393,7 +394,7 @@
       and it writes the worklog for you.
     </p>
     <div class="cta">
-      <a class="btn btn-primary" href="https://github.com/devrashed01/workpilot-releases/releases/latest">Download for macOS</a>
+      <a class="btn btn-primary" data-goatcounter-click="download-hero" data-goatcounter-title="Download (top of page)" href="https://github.com/devrashed01/workpilot-releases/releases/latest">Download for macOS</a>
       <a class="btn btn-ghost" href="#film" data-play-film><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 10 6 0 12z"/></svg>Watch the film</a>
       <span class="beneath">macOS 13 or later · Apple silicon</span>
     </div>
@@ -657,8 +658,8 @@
     </table>
 
     <div class="cta" style="margin-top:52px">
-      <a class="btn btn-primary" href="https://github.com/devrashed01/workpilot-releases/releases/latest">Download for macOS</a>
-      <a class="btn btn-ghost" href="https://github.com/devrashed01/workpilot-releases/releases">Release notes</a>
+      <a class="btn btn-primary" data-goatcounter-click="download-install" data-goatcounter-title="Download (install section)" href="https://github.com/devrashed01/workpilot-releases/releases/latest">Download for macOS</a>
+      <a class="btn btn-ghost" data-goatcounter-click="release-notes" data-goatcounter-title="Release notes" href="https://github.com/devrashed01/workpilot-releases/releases">Release notes</a>
     </div>
   </div>
 </section>
@@ -696,6 +697,7 @@
   <div class="wrap">
     WorkPilot is in beta. Found something wrong, or want a feature?
     <a href="https://github.com/devrashed01/workpilot-releases/issues">Open an issue</a>.
+    <span class="counted">This site counts visits with GoatCounter — no cookies, nothing that identifies you.</span>
   </div>
 </footer>
 
@@ -709,9 +711,14 @@
     if (!video || !button) return;
     video.removeAttribute("controls");
     button.hidden = false;
-    const play = () => { button.hidden = true; video.setAttribute("controls", ""); video.play(); };
+    // GoatCounter events; a no-op if its script is blocked or hasn't loaded
+    const count = (path, title) => window.goatcounter?.count?.({ path, title, event: true });
+    const play = () => { button.hidden = true; video.setAttribute("controls", ""); video.play(); count("film-play", "Film started"); };
     button.addEventListener("click", play);
-    video.addEventListener("ended", () => { video.removeAttribute("controls"); video.load(); button.hidden = false; });
+    video.addEventListener("ended", () => {
+      count("film-finish", "Film watched to the end");
+      video.removeAttribute("controls"); video.load(); button.hidden = false;
+    });
     document.querySelectorAll("[data-play-film]").forEach(a => a.addEventListener("click", e => {
       e.preventDefault();
       video.closest(".film").scrollIntoView({ behavior: "smooth", block: "center" });
@@ -719,5 +726,8 @@
     }));
   })();
 </script>
+<!-- Visitor counts: GoatCounter, cookieless. Add #toggle-goatcounter to the URL
+     once to stop counting your own browser. -->
+<script data-goatcounter="https://workpilot.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
