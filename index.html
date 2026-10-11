@@ -210,19 +210,25 @@
   #tour1:checked ~ .tabs label[for="tour1"],
   #tour2:checked ~ .tabs label[for="tour2"],
   #tour3:checked ~ .tabs label[for="tour3"],
-  #tour4:checked ~ .tabs label[for="tour4"] {
+  #tour4:checked ~ .tabs label[for="tour4"],
+  #tour5:checked ~ .tabs label[for="tour5"],
+  #tour6:checked ~ .tabs label[for="tour6"] {
     background: var(--ink); border-color: var(--ink); color: #fff;
   }
   #tour1:focus-visible ~ .tabs label[for="tour1"],
   #tour2:focus-visible ~ .tabs label[for="tour2"],
   #tour3:focus-visible ~ .tabs label[for="tour3"],
-  #tour4:focus-visible ~ .tabs label[for="tour4"] {
+  #tour4:focus-visible ~ .tabs label[for="tour4"],
+  #tour5:focus-visible ~ .tabs label[for="tour5"],
+  #tour6:focus-visible ~ .tabs label[for="tour6"] {
     outline: 2px solid var(--accent); outline-offset: 3px;
   }
   #tour1:checked ~ .panes .pane1,
   #tour2:checked ~ .panes .pane2,
   #tour3:checked ~ .panes .pane3,
-  #tour4:checked ~ .panes .pane4 { display: block; }
+  #tour4:checked ~ .panes .pane4,
+  #tour5:checked ~ .panes .pane5,
+  #tour6:checked ~ .panes .pane6 { display: block; }
 
   /* ---------- the film ---------- */
   .film {
@@ -402,9 +408,9 @@
     <figure>
       <picture>
         <source media="(max-width: 700px)" srcset="today-narrow.webp">
-        <img class="shot" src="today.webp" alt="The Today page: hours logged per ticket with the comment written for each, and the day's activity below" width="1478" height="884">
+        <img class="shot" src="today.webp" alt="The Today page: plan, standup, work and log across the top, and the task being tracked" width="1600" height="875">
       </picture>
-      <figcaption>Today: what went to Jira, what you actually did, and the activity behind it. Sample tickets shown.</figcaption>
+      <figcaption>Today: where your day stands — plan, standup, work, log — and what you're working on now. Sample data shown.</figcaption>
     </figure>
   </div>
 </div>
@@ -417,7 +423,7 @@
       <!-- preload="none": nothing but the 30 KB poster loads until someone presses play -->
       <video id="film-video" src="workpilot-film.mp4" poster="film-poster.webp" preload="none"
              playsinline controls width="1920" height="1080"
-             aria-label="WorkPilot's 49-second launch film: the Today page, Memory, Sprint, worklog history, Fix my wording and privacy, with music"></video>
+             aria-label="WorkPilot's 49-second launch film: one day from Plan and Standup to the Today page and Log, then Fix my wording and privacy, with music"></video>
       <button class="play" id="film-play" type="button" hidden aria-label="Play the 49-second film, with sound">
         <span class="disc"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0 10 6 0 12z" fill="#fff"/></svg></span>
         Watch the film <span class="len">· 0:49</span>
@@ -429,43 +435,43 @@
 <section id="what">
   <div class="wrap">
     <span class="eyebrow">What it does</span>
-    <h2>It watches the work,<br><span class="ital">not you.</span></h2>
+    <h2>Your whole day,<br><span class="ital">in four steps.</span></h2>
     <p class="sub">
-      Everything WorkPilot knows comes from the tools you already use. It reads what you
-      pushed, what you reviewed, what meetings you sat in and what tickets moved — then lines
-      them up against the day and offers you a worklog you can actually check.
+      Plan, standup, work, log — the app is laid out the way a working day runs, and the top
+      of Today shows which step you're on. Everything it knows comes from the tools you already
+      use: what you pushed, what you reviewed, which meetings you sat in, which tickets moved.
     </p>
 
     <div class="grid">
       <div class="card">
         <span class="num">01</span>
-        <h3>A memory of your day</h3>
-        <p>Commits, branches, pull requests, meetings and Jira activity, collected quarter-hourly into a local database and shown as an hour-by-hour timeline.</p>
+        <h3>Plan the day — or tomorrow</h3>
+        <p>Pick tickets by hand or let AI suggest a day that fits your hours. Plan tomorrow at six o'clock and it's waiting on your list in the morning.</p>
       </div>
       <div class="card">
         <span class="num">02</span>
-        <h3>Worklogs that write themselves</h3>
-        <p>Suggested hours per ticket, with a comment drawn from your own commit messages. Nothing is written to Jira until you say so.</p>
+        <h3>A standup that writes itself</h3>
+        <p>Yesterday, today and blockers under the real ticket titles, previewed exactly as Slack will show it. Build tomorrow's tonight and send it later.</p>
       </div>
       <div class="card">
         <span class="num">03</span>
-        <h3>Standups from what happened</h3>
-        <p>Yesterday, today and blockers, grouped under the real ticket titles — built from the record, not from memory.</p>
+        <h3>Work, tracked without thinking</h3>
+        <p>A menu-bar timer that turns blue while you work, pauses when you lock the screen, and quick-log shortcuts that never pull you out of your editor.</p>
       </div>
       <div class="card">
         <span class="num">04</span>
-        <h3>Ask what you did</h3>
-        <p>"What was I doing last Tuesday?" Every answer is a list of things that were actually recorded, with the evidence attached.</p>
+        <h3>Worklogs that write themselves</h3>
+        <p>Suggested hours per ticket, with comments from your own commits and notes. Nothing is written to Jira until you say so.</p>
       </div>
       <div class="card">
         <span class="num">05</span>
-        <h3>Quick-log shortcuts</h3>
-        <p>Log time to a Jira ticket from a floating panel without leaving your editor, and jot down work that leaves no commit — a review, a call, testing.</p>
+        <h3>A memory of your day</h3>
+        <p>Commits, branches, pull requests, meetings and Jira activity, collected into a local database and shown as an hour-by-hour timeline.</p>
       </div>
       <div class="card">
         <span class="num">06</span>
-        <h3>A menu-bar timer</h3>
-        <p>Start, pause and switch tasks from the menu bar. It pauses itself when you lock the screen and nudges you when nothing is running.</p>
+        <h3>Ask what you did</h3>
+        <p>"What was I doing last Tuesday?" Every answer is a list of things that were actually recorded, with the evidence attached.</p>
       </div>
     </div>
   </div>
@@ -485,47 +491,58 @@
       <input type="radio" name="tour" id="tour2">
       <input type="radio" name="tour" id="tour3">
       <input type="radio" name="tour" id="tour4">
+      <input type="radio" name="tour" id="tour5">
+      <input type="radio" name="tour" id="tour6">
       <div class="tabs">
-        <label for="tour1">Memory</label>
-        <label for="tour2">Sprint</label>
-        <label for="tour3">Worklog history</label>
-        <label for="tour4">Connections</label>
+        <label for="tour1">Plan</label>
+        <label for="tour2">Standup</label>
+        <label for="tour3">Log</label>
+        <label for="tour4">Memory</label>
+        <label for="tour5">Sprint</label>
+        <label for="tour6">Connections</label>
       </div>
       <div class="panes">
         <figure class="pane pane1">
           <div class="frame">
-            <img src="shot-memory.webp" loading="lazy" width="1600" height="1000"
-               alt="The Memory page: meetings, commits and pull requests listed day by day">
+            <img src="shot-plan.webp" loading="lazy" width="1600" height="875"
+               alt="The Plan page: tickets to pick from on the left, today's list and how much of the day it fills on the right">
           </div>
-          <p>Every meeting, commit and pull request, kept in the order they happened.
-             <strong>"What was I doing last Tuesday?"</strong> stops being a guess — and search
-             takes a ticket key, or anything you remember typing.</p>
+          <p>Pick from your tickets, or let AI suggest a day that fits. Switch to <strong>Next day</strong> and line up tomorrow — it stays off today's list until tomorrow comes.</p>
         </figure>
         <figure class="pane pane2">
           <div class="frame">
-            <img src="shot-sprint.webp" loading="lazy" width="1600" height="1000"
-               alt="The Sprint page: how long each ticket has been carried, and the burndown against plan">
+            <img src="shot-standup.webp" loading="lazy" width="1600" height="875"
+               alt="The standup builder: lines to pick on the left, the message as Slack will show it on the right">
           </div>
-          <p>How many sprints each ticket has been <strong>carried</strong>, which ones are
-             blocked, and whether the burndown is keeping pace — next to what's in the sprint
-             that never made it into your plan.</p>
+          <p>Built from what was logged and what's on your list, <strong>previewed exactly as Slack shows it</strong>. Edits survive a trip to another page, and Send later posts it in the morning.</p>
         </figure>
         <figure class="pane pane3">
           <div class="frame">
-            <img src="shot-jira.webp" loading="lazy" width="1600" height="1000"
-               alt="Worklog history: hours logged per day and per ticket over the last seven days">
+            <img src="shot-log.webp" loading="lazy" width="1600" height="875"
+               alt="The Log page: each ticket's hours and a comment drafted from commits and notes, ready to send to Jira or ERP360">
           </div>
-          <p>What you logged, <strong>day by day and ticket by ticket</strong>, over any range you
-             pick. The week adds up before anyone asks you to add it up.</p>
+          <p>Every ticket's hours with a comment drafted from <strong>your commits and notes</strong>, routed to Jira or ERP360. Nothing is written until you confirm.</p>
         </figure>
         <figure class="pane pane4">
           <div class="frame">
-            <img src="shot-connections.webp" loading="lazy" width="1600" height="1000"
-               alt="The Git connection: the repositories you added, and what WorkPilot reads from them">
+            <img src="shot-memory.webp" loading="lazy" width="1600" height="875"
+               alt="The History page: meetings, commits and pull requests listed hour by hour">
           </div>
-          <p>WorkPilot reads the repositories <strong>you add by hand</strong>, and never goes
-             looking for others. Commit messages, branch names and timestamps — never what is
-             inside a file.</p>
+          <p>Every meeting, commit and pull request, kept in the order they happened. <strong>"What was I doing last Tuesday?"</strong> stops being a guess.</p>
+        </figure>
+        <figure class="pane pane5">
+          <div class="frame">
+            <img src="shot-sprint.webp" loading="lazy" width="1600" height="875"
+               alt="The Sprint page: your plan for the sprint, how long tickets have been carried, and the burndown">
+          </div>
+          <p>How many sprints each ticket has been <strong>carried</strong>, which ones are blocked, and whether the burndown is keeping pace.</p>
+        </figure>
+        <figure class="pane pane6">
+          <div class="frame">
+            <img src="shot-connections.webp" loading="lazy" width="1600" height="875"
+               alt="The Jira connection page: who you're connected as, and which tickets show where">
+          </div>
+          <p>Each connection in one place, with <strong>one line saying what every setting changes</strong> — and nothing collected until you've agreed to it.</p>
         </figure>
       </div>
     </div>
@@ -583,11 +600,13 @@
     <span class="eyebrow">Setup</span>
     <h2>Connect what you use,<br><span class="ital">ignore the rest.</span></h2>
     <p class="sub">
-      Jira, Git, GitHub, Bitbucket and Google Calendar each stand on their own. Give it one and
-      it works with one. Every shortcut is yours to change or switch off.
+      Jira, ERP360, Slack, Git, GitHub, Bitbucket and Google Calendar each stand on their own.
+      Give it one and it works with one. Every shortcut is yours to change or switch off.
     </p>
     <div class="chips">
       <span class="chip">Jira</span>
+      <span class="chip">ERP360</span>
+      <span class="chip">Slack</span>
       <span class="chip">Git</span>
       <span class="chip">GitHub</span>
       <span class="chip">Bitbucket</span>
@@ -623,7 +642,7 @@
       </tr>
     </table>
     <figure>
-      <img src="shot-privacy.webp" loading="lazy" width="1600" height="1000"
+      <img src="shot-privacy.webp" loading="lazy" width="1600" height="875"
            alt="WorkPilot's Privacy settings: a switch per activity source, and the list of what is never captured">
       <figcaption>Every source has its own switch, and the app says plainly what it will never read.</figcaption>
     </figure>
